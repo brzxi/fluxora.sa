@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>العروض الحصرية | Fluxora</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/animations.js" defer></script>
+</head>
+<body x-data>
+  <div class="animated-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+  <div class="particles-container"></div>
+  <div class="cursor-glow"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">Fluxora</a>
+        <ul class="nav-links" :class="{ 'active': $store.app.mobileMenuOpen }">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="category.html">المنتجات</a></li>
+          <li><a href="subscriptions.html">الاشتراكات</a></li>
+          <li><a href="offers.html" style="color:var(--text-primary);">العروض</a></li>
+          <li><a href="about.html">من نحن</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="nav-cart" aria-label="سلة التسوق"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+          <button class="mobile-toggle" @click="$store.app.toggleMobileMenu()" aria-label="القائمة"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section style="padding:4rem 0;position:relative;overflow:hidden;">
+    <div class="container">
+      <div class="glass fade-in" style="padding:3rem;text-align:center;position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(59,130,246,0.1),rgba(139,92,246,0.1));"></div>
+        <div style="position:relative;z-index:1;">
+          <span style="font-size:3rem;display:block;margin-bottom:1rem;">🔥</span>
+          <h1 style="font-size:2.5rem;margin-bottom:0.75rem;">عروض <span class="gradient-text">حصرية</span></h1>
+          <p style="font-size:1.1rem;max-width:500px;margin:0 auto;">خصومات تصل إلى 50% على أفضل المنتجات الرقمية. العروض محدودة!</p>
+          
+          <!-- Countdown Timer -->
+          <div x-data="{ days: 2, hours: 14, minutes: 37, seconds: 52 }" style="display:flex;justify-content:center;gap:1rem;margin-top:2rem;">
+            <div style="text-align:center;padding:1rem;background:var(--bg-primary);border-radius:var(--radius-md);min-width:70px;">
+              <div style="font-size:1.75rem;font-weight:700;" x-text="days">2</div>
+              <div style="font-size:0.7rem;color:var(--text-muted);">يوم</div>
+            </div>
+            <div style="text-align:center;padding:1rem;background:var(--bg-primary);border-radius:var(--radius-md);min-width:70px;">
+              <div style="font-size:1.75rem;font-weight:700;" x-text="hours">14</div>
+              <div style="font-size:0.7rem;color:var(--text-muted);">ساعة</div>
+            </div>
+            <div style="text-align:center;padding:1rem;background:var(--bg-primary);border-radius:var(--radius-md);min-width:70px;">
+              <div style="font-size:1.75rem;font-weight:700;" x-text="minutes">37</div>
+              <div style="font-size:0.7rem;color:var(--text-muted);">دقيقة</div>
+            </div>
+            <div style="text-align:center;padding:1rem;background:var(--bg-primary);border-radius:var(--radius-md);min-width:70px;">
+              <div style="font-size:1.75rem;font-weight:700;" x-text="seconds">52</div>
+              <div style="font-size:0.7rem;color:var(--text-muted);">ثانية</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offers Grid -->
+  <section class="section" style="padding-top:1rem;">
+    <div class="container">
+      <div class="products-grid">
+        <!-- Offer 1 -->
+        <div class="product-card fade-in">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">🤖</span></div><div class="product-card-badge"><span class="badge badge-gradient">خصم 20%</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">ذكاء اصطناعي</span>
+            <h4 class="product-card-title">اشتراك ChatGPT Plus - شهر</h4>
+            <div class="product-card-footer"><div><span class="product-price">79 <span class="currency">ر.س</span></span><span class="product-old-price">99 ر.س</span></div><button class="btn btn-primary btn-sm" onclick="showToast('تمت الإضافة!')">إضافة</button></div>
+          </div>
+        </div>
+
+        <!-- Offer 2 -->
+        <div class="product-card fade-in">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#e50914,#831010);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">🎬</span></div><div class="product-card-badge"><span class="badge badge-gradient">خصم 30%</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">بث</span>
+            <h4 class="product-card-title">Netflix Premium - 3 أشهر</h4>
+            <div class="product-card-footer"><div><span class="product-price">149 <span class="currency">ر.س</span></span><span class="product-old-price">210 ر.س</span></div><button class="btn btn-primary btn-sm" onclick="showToast('تمت الإضافة!')">إضافة</button></div>
+          </div>
+        </div>
+
+        <!-- Offer 3 -->
+        <div class="product-card fade-in">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#5865F2,#2d3380);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">🎮</span></div><div class="product-card-badge"><span class="badge badge-gradient">خصم 29%</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">ألعاب</span>
+            <h4 class="product-card-title">PlayStation Plus Premium - سنة</h4>
+            <div class="product-card-footer"><div><span class="product-price">249 <span class="currency">ر.س</span></span><span class="product-old-price">350 ر.س</span></div><button class="btn btn-primary btn-sm" onclick="showToast('تمت الإضافة!')">إضافة</button></div>
+          </div>
+        </div>
+
+        <!-- Offer 4 -->
+        <div class="product-card fade-in">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#00D2FF,#3A7BD5);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">☁️</span></div><div class="product-card-badge"><span class="badge badge-gradient">خصم 25%</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">سحابي</span>
+            <h4 class="product-card-title">iCloud+ 2TB - سنة</h4>
+            <div class="product-card-footer"><div><span class="product-price">179 <span class="currency">ر.س</span></span><span class="product-old-price">240 ر.س</span></div><button class="btn btn-primary btn-sm" onclick="showToast('تمت الإضافة!')">إضافة</button></div>
+          </div>
+        </div>
+
+        <!-- Offer 5 - Bundle -->
+        <div class="product-card fade-in" style="grid-column:span 2;">
+          <div class="product-card-image" style="padding-top:30%;"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#F59E0B,#D97706);display:flex;align-items:center;justify-content:center;gap:1rem;"><span style="font-size:2.5rem;">🤖</span><span style="font-size:2rem;color:rgba(255,255,255,0.5);">+</span><span style="font-size:2.5rem;">🎬</span><span style="font-size:2rem;color:rgba(255,255,255,0.5);">+</span><span style="font-size:2.5rem;">🎵</span></div><div class="product-card-badge"><span class="badge badge-success">باقة مميزة</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">باقات</span>
+            <h4 class="product-card-title">باقة الترفيه الكاملة - ChatGPT + Netflix + Spotify (3 أشهر)</h4>
+            <div class="product-card-footer"><div><span class="product-price">349 <span class="currency">ر.س</span></span><span class="product-old-price">520 ر.س</span></div><button class="btn btn-primary btn-sm" onclick="showToast('تمت الإضافة!')">إضافة</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Coupon Section -->
+  <section class="section" style="background:var(--bg-secondary);">
+    <div class="container">
+      <div class="newsletter fade-in" style="text-align:center;">
+        <span style="font-size:3rem;display:block;margin-bottom:1rem;position:relative;z-index:1;">🎁</span>
+        <h2 style="position:relative;z-index:1;">كود خصم <span class="gradient-text">حصري</span></h2>
+        <p style="position:relative;z-index:1;margin-top:0.75rem;">استخدم الكود التالي للحصول على خصم 10% إضافي</p>
+        <div style="margin-top:1.5rem;position:relative;z-index:1;">
+          <div style="display:inline-flex;align-items:center;gap:1rem;padding:1rem 2rem;background:var(--bg-primary);border:2px dashed var(--accent-blue);border-radius:var(--radius-lg);">
+            <span style="font-size:1.5rem;font-weight:700;letter-spacing:0.1em;font-family:monospace;">FLUX10</span>
+            <button class="btn btn-primary btn-sm" onclick="navigator.clipboard.writeText('FLUX10'); showToast('تم نسخ الكود!')">نسخ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding:2rem 0;">
+        <p>© 2024 Fluxora. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

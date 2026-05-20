@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الاشتراكات الرقمية | Fluxora</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/animations.js" defer></script>
+</head>
+<body x-data>
+  <div class="animated-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+  <div class="particles-container"></div>
+  <div class="cursor-glow"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">Fluxora</a>
+        <ul class="nav-links" :class="{ 'active': $store.app.mobileMenuOpen }">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="category.html">المنتجات</a></li>
+          <li><a href="subscriptions.html" style="color:var(--text-primary);">الاشتراكات</a></li>
+          <li><a href="offers.html">العروض</a></li>
+          <li><a href="about.html">من نحن</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="nav-cart" aria-label="سلة التسوق"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+          <button class="mobile-toggle" @click="$store.app.toggleMobileMenu()" aria-label="القائمة"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" style="min-height:70vh;">
+    <div class="hero-grid"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge fade-in">
+          <span>✨</span>
+          <span>اشتراكات رقمية بأفضل الأسعار</span>
+        </div>
+        <h1 class="fade-in">اشتراكاتك <span class="gradient-text">الرقمية</span><br>في مكان واحد</h1>
+        <p class="fade-in">وفّر حتى 50% على اشتراكاتك المفضلة. Netflix, Spotify, ChatGPT, والمزيد. تسليم فوري وضمان كامل.</p>
+        <div class="hero-actions fade-in">
+          <a href="#plans" class="btn btn-primary btn-lg">اختر اشتراكك</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subscription Categories -->
+  <section class="section" id="plans">
+    <div class="container">
+      <div class="section-header">
+        <h2>اختر <span class="gradient-text">فئة الاشتراك</span></h2>
+        <p>نوفر لك أشهر الاشتراكات الرقمية بأسعار لا تُقاوم</p>
+      </div>
+
+      <!-- AI Tools -->
+      <div style="margin-bottom:4rem;">
+        <h3 style="margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;">
+          <span style="font-size:1.5rem;">🤖</span>
+          أدوات الذكاء الاصطناعي
+        </h3>
+        <div class="pricing-grid">
+          <div class="pricing-card fade-in">
+            <div class="pricing-name">ChatGPT Plus</div>
+            <div class="pricing-price">79 <span class="currency">ر.س</span></div>
+            <div class="pricing-period">شهر واحد</div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> GPT-4o كامل</li>
+              <li><span class="check">✓</span> DALL-E 3</li>
+              <li><span class="check">✓</span> تصفح الإنترنت</li>
+              <li><span class="check">✓</span> تحليل الملفات</li>
+              <li><span class="check">✓</span> أولوية الاستجابة</li>
+            </ul>
+            <button class="btn btn-primary" style="width:100%;" onclick="showToast('تمت الإضافة للسلة!')">اشترك الآن</button>
+          </div>
+
+          <div class="pricing-card featured fade-in">
+            <div class="pricing-label">الأكثر طلباً</div>
+            <div class="pricing-name">ChatGPT Plus</div>
+            <div class="pricing-price">199 <span class="currency">ر.س</span></div>
+            <div class="pricing-period">3 أشهر - وفّر 38 ر.س</div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> كل مميزات الشهر</li>
+              <li><span class="check">✓</span> توفير 16%</li>
+              <li><span class="check">✓</span> دعم أولوية</li>
+              <li><span class="check">✓</span> تجديد تلقائي</li>
+              <li><span class="check">✓</span> ضمان ممتد</li>
+            </ul>
+            <button class="btn btn-primary" style="width:100%;" onclick="showToast('تمت الإضافة للسلة!')">اشترك الآن</button>
+          </div>
+
+          <div class="pricing-card fade-in">
+            <div class="pricing-name">Midjourney Standard</div>
+            <div class="pricing-price">99 <span class="currency">ر.س</span></div>
+            <div class="pricing-period">شهر واحد</div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> 15 ساعة GPU</li>
+              <li><span class="check">✓</span> توليد صور غير محدود</li>
+              <li><span class="check">✓</span> جودة عالية</li>
+              <li><span class="check">✓</span> استخدام تجاري</li>
+              <li><span class="check">✓</span> Stealth Mode</li>
+            </ul>
+            <button class="btn btn-primary" style="width:100%;" onclick="showToast('تمت الإضافة للسلة!')">اشترك الآن</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Streaming -->
+      <div style="margin-bottom:4rem;">
+        <h3 style="margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;">
+          <span style="font-size:1.5rem;">🎬</span>
+          اشتراكات البث والترفيه
+        </h3>
+        <div class="pricing-grid">
+          <div class="pricing-card fade-in">
+            <div class="pricing-name">Netflix Premium</div>
+            <div class="pricing-price">59 <span class="currency">ر.س</span></div>
+            <div class="pricing-period">شهر واحد</div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> 4K Ultra HD</li>
+              <li><span class="check">✓</span> 4 شاشات</li>
+              <li><span class="check">✓</span> بدون إعلانات</li>
+              <li><span class="check">✓</span> تحميل للمشاهدة لاحقاً</li>
+            </ul>
+            <button class="btn btn-primary" style="width:100%;" onclick="showToast('تمت الإضافة!')">اشترك الآن</button>
+          </div>
+
+          <div class="pricing-card featured fade-in">
+            <div class="pricing-label">أفضل قيمة</div>
+            <div class="pricing-name">Netflix Premium</div>
+            <div class="pricing-price">149 <span class="currency">ر.س</span></div>
+            <div class="pricing-period">3 أشهر - وفّر 28 ر.س</div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> كل المميزات</li>
+              <li><span class="check">✓</span> توفير 16%</li>
+              <li><span class="check">✓</span> ضمان 3 أشهر</li>
+              <li><span class="check">✓</span> دعم فوري</li>
+            </ul>
+            <button class="btn btn-primary" style="width:100%;" onclick="showToast('تمت الإضافة!')">اشترك الآن</button>
+          </div>
+
+          <div class="pricing-card fade-in">
+            <div class="pricing-name">Spotify Premium</div>
+            <div class="pricing-price">199 <span class="currency">ر.س</span></div>
+            <div class="pricing-period">سنة كاملة</div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> موسيقى بلا حدود</li>
+              <li><span class="check">✓</span> بدون إعلانات</li>
+              <li><span class="check">✓</span> تحميل أوفلاين</li>
+              <li><span class="check">✓</span> جودة صوت عالية</li>
+            </ul>
+            <button class="btn btn-primary" style="width:100%;" onclick="showToast('تمت الإضافة!')">اشترك الآن</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gaming -->
+      <div>
+        <h3 style="margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;">
+          <span style="font-size:1.5rem;">🎮</span>
+          اشتراكات الألعاب
+        </h3>
+        <div class="pricing-grid">
+          <div class="pricing-card fade-in">
+            <div class="pricing-name">PS Plus Essential</div>
+            <div class="pricing-price">99 <span class="currency">ر.س</span></div>
+            <div class="pricing-period">3 أشهر</div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> لعب أونلاين</li>
+              <li><span class="check">✓</span> ألعاب مجانية شهرية</li>
+              <li><span class="check">✓</span> خصومات حصرية</li>
+              <li><span class="check">✓</span> تخزين سحابي</li>
+            </ul>
+            <button class="btn btn-primary" style="width:100%;" onclick="showToast('تمت الإضافة!')">اشترك الآن</button>
+          </div>
+
+          <div class="pricing-card featured fade-in">
+            <div class="pricing-label">الأفضل</div>
+            <div class="pricing-name">PS Plus Premium</div>
+            <div class="pricing-price">249 <span class="currency">ر.س</span></div>
+            <div class="pricing-period">سنة كاملة</div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> كل مميزات Essential</li>
+              <li><span class="check">✓</span> مكتبة ألعاب ضخمة</li>
+              <li><span class="check">✓</span> بث ألعاب سحابي</li>
+              <li><span class="check">✓</span> ألعاب كلاسيكية</li>
+              <li><span class="check">✓</span> تجربة ألعاب مبكرة</li>
+            </ul>
+            <button class="btn btn-primary" style="width:100%;" onclick="showToast('تمت الإضافة!')">اشترك الآن</button>
+          </div>
+
+          <div class="pricing-card fade-in">
+            <div class="pricing-name">Xbox Game Pass Ultimate</div>
+            <div class="pricing-price">159 <span class="currency">ر.س</span></div>
+            <div class="pricing-period">3 أشهر</div>
+            <ul class="pricing-features">
+              <li><span class="check">✓</span> +400 لعبة</li>
+              <li><span class="check">✓</span> ألعاب يوم الإصدار</li>
+              <li><span class="check">✓</span> EA Play مضمن</li>
+              <li><span class="check">✓</span> بث سحابي</li>
+            </ul>
+            <button class="btn btn-primary" style="width:100%;" onclick="showToast('تمت الإضافة!')">اشترك الآن</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="section" style="background:var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <h2>لماذا تشتري <span class="gradient-text">من فلكسورا</span>؟</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">💸</div>
+          <h4>وفّر حتى 50%</h4>
+          <p>أسعارنا أقل بكثير من الاشتراك المباشر مع نفس الجودة والمميزات.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">⚡</div>
+          <h4>تفعيل خلال ثوانٍ</h4>
+          <p>نظام تسليم آلي يعمل 24/7. استلم اشتراكك فوراً بعد الدفع.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🔄</div>
+          <h4>تجديد سهل</h4>
+          <p>جدد اشتراكك بضغطة زر. نذكرك قبل انتهاء الاشتراك.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding:2rem 0;">
+        <p>© 2024 Fluxora. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile CTA -->
+  <div class="mobile-cta-bar">
+    <div>
+      <span style="font-size:0.8rem;color:var(--text-muted);">اشتراكات رقمية</span>
+      <div style="font-weight:700;font-size:0.95rem;">وفّر حتى 50%</div>
+    </div>
+    <a href="#plans" class="btn btn-primary btn-sm">اختر اشتراكك</a>
+  </div>
+</body>
+</html>

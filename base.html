@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="{{ page.meta_description | default('فلكسورا - وجهتك الأولى للمنتجات الرقمية') }}">
+  <meta name="keywords" content="{{ page.meta_keywords | default('اشتراكات رقمية, ذكاء اصطناعي, حسابات ألعاب') }}">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ page.title | default('Fluxora') }}">
+  <meta property="og:description" content="{{ page.meta_description | default('') }}">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="{{ store.logo }}">
+  <meta property="og:url" content="{{ page.url }}">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title | default('Fluxora') }}">
+  
+  <title>{{ page.title | default('Fluxora') }}</title>
+  
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap">
+  
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="{{ 'assets/css/main.css' | asset_url }}">
+  {% if page.template == 'checkout' %}
+  <link rel="stylesheet" href="{{ 'assets/css/checkout.css' | asset_url }}">
+  {% endif %}
+  
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  
+  <!-- Salla SDK -->
+  {{ salla.head }}
+  
+  {% block head %}{% endblock %}
+</head>
+<body x-data class="page-transition">
+
+  <!-- Background Effects -->
+  {% if settings.layout.enable_particles %}
+  <div class="animated-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+  <div class="particles-container"></div>
+  {% endif %}
+  
+  {% if settings.layout.enable_cursor_glow %}
+  <div class="cursor-glow"></div>
+  {% endif %}
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress"></div>
+
+  <!-- Header -->
+  {% include 'components/header.html' %}
+
+  <!-- Main Content -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Footer -->
+  {% include 'components/footer.html' %}
+
+  <!-- Mobile CTA Bar -->
+  {% block mobile_cta %}{% endblock %}
+
+  <!-- Theme JS -->
+  <script src="{{ 'assets/js/app.js' | asset_url }}" defer></script>
+  {% if settings.layout.enable_animations %}
+  <script src="{{ 'assets/js/animations.js' | asset_url }}" defer></script>
+  {% endif %}
+  <script src="{{ 'assets/js/salla-integration.js' | asset_url }}" defer></script>
+  
+  <!-- Salla Footer -->
+  {{ salla.footer }}
+  
+  {% block scripts %}{% endblock %}
+</body>
+</html>

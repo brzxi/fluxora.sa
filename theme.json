@@ -1,0 +1,168 @@
+{
+  "name": "Fluxora",
+  "version": "1.0.0",
+  "author": "Fluxora Studio",
+  "description": "ثيم فلكسورا - ثيم احترافي فاخر للمنتجات الرقمية والاشتراكات مصمم خصيصاً للسوق السعودي والخليجي",
+  "engine": "1.0",
+  "platform": "salla",
+  "license": "commercial",
+  "tags": ["digital", "subscriptions", "gaming", "ai-tools", "dark-theme", "premium", "arabic", "rtl"],
+  "category": "digital-products",
+  "preview": {
+    "desktop": "assets/images/preview-desktop.png",
+    "mobile": "assets/images/preview-mobile.png"
+  },
+  "settings": {
+    "colors": {
+      "primary_bg": {
+        "label": "الخلفية الرئيسية",
+        "type": "color",
+        "default": "#0B0F19"
+      },
+      "secondary_bg": {
+        "label": "الخلفية الثانوية",
+        "type": "color",
+        "default": "#121826"
+      },
+      "accent_start": {
+        "label": "لون التدرج - البداية",
+        "type": "color",
+        "default": "#3B82F6"
+      },
+      "accent_end": {
+        "label": "لون التدرج - النهاية",
+        "type": "color",
+        "default": "#8B5CF6"
+      },
+      "text_primary": {
+        "label": "لون النص الرئيسي",
+        "type": "color",
+        "default": "#FFFFFF"
+      },
+      "text_secondary": {
+        "label": "لون النص الثانوي",
+        "type": "color",
+        "default": "#94A3B8"
+      },
+      "success": {
+        "label": "لون النجاح",
+        "type": "color",
+        "default": "#22C55E"
+      }
+    },
+    "typography": {
+      "font_family": {
+        "label": "نوع الخط",
+        "type": "select",
+        "options": ["IBM Plex Sans Arabic", "Tajawal", "Cairo", "Almarai"],
+        "default": "IBM Plex Sans Arabic"
+      },
+      "base_size": {
+        "label": "حجم الخط الأساسي",
+        "type": "number",
+        "default": 16,
+        "min": 14,
+        "max": 20
+      }
+    },
+    "layout": {
+      "container_width": {
+        "label": "عرض الحاوية",
+        "type": "select",
+        "options": ["1200px", "1320px", "1440px"],
+        "default": "1320px"
+      },
+      "header_style": {
+        "label": "نمط الهيدر",
+        "type": "select",
+        "options": ["sticky", "fixed", "static"],
+        "default": "sticky"
+      },
+      "enable_particles": {
+        "label": "تفعيل الجزيئات المتحركة",
+        "type": "boolean",
+        "default": true
+      },
+      "enable_cursor_glow": {
+        "label": "تفعيل توهج المؤشر",
+        "type": "boolean",
+        "default": true
+      },
+      "enable_animations": {
+        "label": "تفعيل الحركات",
+        "type": "boolean",
+        "default": true
+      }
+    },
+    "homepage": {
+      "hero_title": {
+        "label": "عنوان البطل",
+        "type": "text",
+        "default": "مستقبل التقنية يبدأ من هنا"
+      },
+      "hero_subtitle": {
+        "label": "وصف البطل",
+        "type": "textarea",
+        "default": "اكتشف أحدث الاشتراكات الرقمية وأدوات الذكاء الاصطناعي وحسابات الألعاب بأفضل الأسعار"
+      },
+      "show_stats": {
+        "label": "إظهار الإحصائيات",
+        "type": "boolean",
+        "default": true
+      },
+      "show_reviews": {
+        "label": "إظهار التقييمات",
+        "type": "boolean",
+        "default": true
+      },
+      "show_faq": {
+        "label": "إظهار الأسئلة الشائعة",
+        "type": "boolean",
+        "default": true
+      },
+      "show_newsletter": {
+        "label": "إظهار النشرة البريدية",
+        "type": "boolean",
+        "default": true
+      }
+    },
+    "social": {
+      "twitter": {
+        "label": "تويتر",
+        "type": "text",
+        "default": ""
+      },
+      "instagram": {
+        "label": "انستقرام",
+        "type": "text",
+        "default": ""
+      },
+      "tiktok": {
+        "label": "تيك توك",
+        "type": "text",
+        "default": ""
+      },
+      "whatsapp": {
+        "label": "واتساب",
+        "type": "text",
+        "default": ""
+      }
+    }
+  },
+  "pages": [
+    "index",
+    "product",
+    "category",
+    "cart",
+    "checkout",
+    "about",
+    "contact",
+    "offers",
+    "subscriptions",
+    "404"
+  ],
+  "assets": {
+    "css": ["assets/css/main.css"],
+    "js": ["assets/js/app.js", "assets/js/animations.js"]
+  }
+}

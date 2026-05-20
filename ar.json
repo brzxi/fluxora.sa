@@ -1,0 +1,101 @@
+{
+  "general": {
+    "store_name": "فلكسورا",
+    "currency": "ر.س",
+    "add_to_cart": "أضف للسلة",
+    "buy_now": "اشترِ الآن",
+    "view_product": "عرض المنتج",
+    "view_all": "عرض الكل",
+    "load_more": "تحميل المزيد",
+    "search": "بحث",
+    "search_placeholder": "ابحث عن منتج...",
+    "close": "إغلاق",
+    "back": "رجوع",
+    "next": "التالي",
+    "previous": "السابق",
+    "home": "الرئيسية",
+    "menu": "القائمة"
+  },
+  "navigation": {
+    "home": "الرئيسية",
+    "products": "المنتجات",
+    "subscriptions": "الاشتراكات",
+    "offers": "العروض",
+    "about": "من نحن",
+    "contact": "تواصل معنا",
+    "cart": "سلة التسوق",
+    "account": "حسابي"
+  },
+  "product": {
+    "add_to_cart": "أضف للسلة",
+    "buy_now": "اشترِ الآن",
+    "in_stock": "متوفر",
+    "out_of_stock": "غير متوفر",
+    "description": "الوصف",
+    "reviews": "التقييمات",
+    "related": "منتجات مشابهة",
+    "features": "المميزات",
+    "how_to_use": "طريقة الاستخدام",
+    "faq": "أسئلة شائعة",
+    "instant_delivery": "تسليم فوري",
+    "guaranteed": "مضمون",
+    "secure_payment": "دفع آمن",
+    "support_24_7": "دعم 24/7"
+  },
+  "cart": {
+    "title": "سلة التسوق",
+    "empty": "السلة فارغة",
+    "empty_message": "لم تقم بإضافة أي منتجات بعد",
+    "subtotal": "المجموع الفرعي",
+    "tax": "الضريبة (15%)",
+    "total": "الإجمالي",
+    "checkout": "إتمام الشراء",
+    "continue_shopping": "متابعة التسوق",
+    "coupon": "كود الخصم",
+    "apply_coupon": "تطبيق",
+    "remove": "حذف",
+    "quantity": "الكمية"
+  },
+  "checkout": {
+    "title": "إتمام الطلب",
+    "contact_info": "معلومات التواصل",
+    "payment_method": "طريقة الدفع",
+    "order_summary": "ملخص الطلب",
+    "place_order": "تأكيد الطلب",
+    "secure_checkout": "جميع المعاملات مشفرة وآمنة",
+    "success_title": "تم الطلب بنجاح!",
+    "success_message": "شكراً لك! سيتم إرسال تفاصيل المنتج إلى بريدك الإلكتروني."
+  },
+  "footer": {
+    "quick_links": "روابط سريعة",
+    "categories": "الأقسام",
+    "support": "الدعم",
+    "payment_methods": "طرق الدفع",
+    "rights": "جميع الحقوق محفوظة",
+    "privacy": "سياسة الخصوصية",
+    "terms": "الشروط والأحكام",
+    "refund": "سياسة الاسترجاع"
+  },
+  "newsletter": {
+    "title": "احصل على عروض حصرية",
+    "subtitle": "اشترك في نشرتنا البريدية واحصل على خصم 10% على أول طلب",
+    "placeholder": "بريدك الإلكتروني",
+    "subscribe": "اشترك الآن",
+    "success": "تم الاشتراك بنجاح! شكراً لك",
+    "error": "يرجى إدخال بريد إلكتروني صحيح"
+  },
+  "errors": {
+    "404_title": "الصفحة غير موجودة",
+    "404_message": "يبدو أن الصفحة التي تبحث عنها غير موجودة أو تم نقلها",
+    "general": "حدث خطأ، حاول مرة أخرى"
+  },
+  "categories": {
+    "ai_tools": "أدوات الذكاء الاصطناعي",
+    "streaming": "اشتراكات البث",
+    "gaming": "حسابات الألعاب",
+    "design": "أدوات التصميم",
+    "cloud": "تخزين سحابي",
+    "software": "البرامج والتطبيقات",
+    "gift_cards": "بطاقات الهدايا"
+  }
+}

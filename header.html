@@ -1,0 +1,61 @@
+<!-- FLUXORA Header Component -->
+<div class="scroll-progress" style="position:fixed;top:0;left:0;height:3px;background:var(--accent-gradient);z-index:10001;width:0;transition:width 0.1s linear;"></div>
+
+<header class="header" x-data x-bind:class="{ 'scrolled': $store.app.isScrolled }">
+  <div class="container">
+    <nav class="nav">
+      <!-- Logo -->
+      <a href="/" class="nav-logo">Fluxora</a>
+
+      <!-- Navigation Links -->
+      <ul class="nav-links" :class="{ 'active': $store.app.mobileMenuOpen }">
+        <li><a href="/">الرئيسية</a></li>
+        <li><a href="/category.html">المنتجات</a></li>
+        <li><a href="/subscriptions.html">الاشتراكات</a></li>
+        <li><a href="/offers.html">العروض</a></li>
+        <li><a href="/about.html">من نحن</a></li>
+        <li><a href="/contact.html">تواصل معنا</a></li>
+      </ul>
+
+      <!-- Actions -->
+      <div class="nav-actions">
+        <!-- Search -->
+        <button class="nav-cart" aria-label="بحث" @click="$store.app.searchOpen = !$store.app.searchOpen">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.3-4.3"></path>
+          </svg>
+        </button>
+
+        <!-- Cart -->
+        <a href="/cart.html" class="nav-cart" aria-label="سلة التسوق">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path>
+            <path d="M3 6h18"></path>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span class="count" x-text="$store.app.cartCount" x-show="$store.app.cartCount > 0"></span>
+        </a>
+
+        <!-- CTA Button -->
+        <a href="/category.html" class="btn btn-primary btn-sm" style="display:none" id="nav-cta">
+          تسوق الآن
+        </a>
+
+        <!-- Mobile Toggle -->
+        <button class="mobile-toggle" @click="$store.app.toggleMobileMenu()" aria-label="القائمة">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Search Overlay -->
+  <div class="search-overlay" x-show="$store.app.searchOpen" x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0" @click.self="$store.app.searchOpen = false" style="position:fixed;inset:0;background:rgba(0,0,0,0.8);z-index:1001;display:flex;align-items:flex-start;justify-content:center;padding-top:15vh;">
+    <div class="glass" style="width:90%;max-width:600px;padding:1.5rem;">
+      <input type="search" class="input-field" placeholder="ابحث عن منتج..." autofocus style="font-size:1.1rem;">
+    </div>
+  </div>
+</header>

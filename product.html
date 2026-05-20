@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="اشتراك ChatGPT Plus - شهر كامل | فلكسورا">
+  <title>اشتراك ChatGPT Plus - شهر كامل | Fluxora</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/animations.js" defer></script>
+</head>
+<body x-data>
+
+  <div class="animated-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+  <div class="particles-container"></div>
+  <div class="cursor-glow"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">Fluxora</a>
+        <ul class="nav-links" :class="{ 'active': $store.app.mobileMenuOpen }">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="category.html">المنتجات</a></li>
+          <li><a href="subscriptions.html">الاشتراكات</a></li>
+          <li><a href="offers.html">العروض</a></li>
+          <li><a href="about.html">من نحن</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="nav-cart" aria-label="سلة التسوق">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span class="count" x-show="$store.app.cartCount > 0" x-text="$store.app.cartCount"></span>
+          </a>
+          <button class="mobile-toggle" @click="$store.app.toggleMobileMenu()" aria-label="القائمة"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="container" style="padding-top:1rem;">
+    <div class="breadcrumb">
+      <a href="index.html">الرئيسية</a>
+      <span class="separator">/</span>
+      <a href="category.html">ذكاء اصطناعي</a>
+      <span class="separator">/</span>
+      <span style="color:var(--text-primary);">اشتراك ChatGPT Plus</span>
+    </div>
+  </div>
+
+  <!-- Product Section -->
+  <section class="section" style="padding-top:2rem;">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;" class="product-layout">
+        
+        <!-- Product Image / Gallery -->
+        <div class="fade-in">
+          <div style="background:linear-gradient(135deg,#667eea,#764ba2);border-radius:var(--radius-xl);padding:4rem;display:flex;align-items:center;justify-content:center;aspect-ratio:1;position:relative;overflow:hidden;">
+            <div style="position:absolute;inset:0;background:radial-gradient(circle at 30% 30%, rgba(255,255,255,0.1), transparent);"></div>
+            <span style="font-size:6rem;position:relative;z-index:1;">🤖</span>
+            <div style="position:absolute;top:1.5rem;right:1.5rem;">
+              <span class="badge badge-success">الأكثر مبيعاً</span>
+            </div>
+          </div>
+
+          <!-- Thumbnails -->
+          <div style="display:flex;gap:0.75rem;margin-top:1rem;">
+            <div style="width:80px;height:80px;background:linear-gradient(135deg,#667eea,#764ba2);border-radius:var(--radius-md);border:2px solid var(--accent-blue);cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:1.5rem;">🤖</span>
+            </div>
+            <div style="width:80px;height:80px;background:var(--bg-tertiary);border-radius:var(--radius-md);border:1px solid var(--glass-border);cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:1.5rem;">📱</span>
+            </div>
+            <div style="width:80px;height:80px;background:var(--bg-tertiary);border-radius:var(--radius-md);border:1px solid var(--glass-border);cursor:pointer;display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:1.5rem;">💻</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Info -->
+        <div class="fade-in" style="animation-delay:0.2s;">
+          <span class="badge badge-gradient" style="margin-bottom:1rem;">ذكاء اصطناعي</span>
+          
+          <h1 style="font-size:2rem;margin-bottom:1rem;">اشتراك ChatGPT Plus - شهر كامل</h1>
+          
+          <p style="font-size:1rem;margin-bottom:1.5rem;">احصل على وصول كامل لـ ChatGPT Plus مع GPT-4o و GPT-4 وجميع المميزات المتقدمة. اشتراك رسمي وأصلي مع ضمان كامل.</p>
+
+          <!-- Rating -->
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:2rem;">
+            <div style="color:#F59E0B;font-size:1.1rem;">★★★★★</div>
+            <span style="color:var(--text-secondary);font-size:0.9rem;">(4.9) - 2,847 تقييم</span>
+            <span class="badge badge-success" style="font-size:0.7rem;">متوفر</span>
+          </div>
+
+          <!-- Price -->
+          <div style="display:flex;align-items:baseline;gap:1rem;margin-bottom:2rem;padding:1.5rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-lg);">
+            <span style="font-size:2.5rem;font-weight:700;background:var(--accent-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">79</span>
+            <span style="font-size:1.1rem;color:var(--text-secondary);">ر.س</span>
+            <span style="text-decoration:line-through;color:var(--text-muted);font-size:1.1rem;">99 ر.س</span>
+            <span class="badge badge-gradient">خصم 20%</span>
+          </div>
+
+          <!-- Benefits -->
+          <div style="margin-bottom:2rem;">
+            <h4 style="margin-bottom:1rem;font-size:1rem;">مميزات المنتج:</h4>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+              <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-secondary);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                وصول GPT-4o كامل
+              </div>
+              <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-secondary);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                DALL-E 3 لتوليد الصور
+              </div>
+              <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-secondary);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                تصفح الإنترنت
+              </div>
+              <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-secondary);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                تحليل الملفات
+              </div>
+              <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-secondary);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                GPTs مخصصة
+              </div>
+              <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.9rem;color:var(--text-secondary);">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                أولوية في الاستجابة
+              </div>
+            </div>
+          </div>
+
+          <!-- Add to Cart -->
+          <div style="display:flex;gap:1rem;margin-bottom:2rem;">
+            <button class="btn btn-primary btn-lg" style="flex:1;" onclick="showToast('تمت الإضافة إلى السلة بنجاح!')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              أضف للسلة
+            </button>
+            <button class="btn btn-success btn-lg" onclick="showToast('جاري التوجيه للدفع...')">اشترِ الآن</button>
+          </div>
+
+          <!-- Trust Badges -->
+          <div style="display:flex;gap:1.5rem;flex-wrap:wrap;padding:1.25rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-md);">
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:var(--text-secondary);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              تسليم فوري
+            </div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:var(--text-secondary);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              ضمان كامل
+            </div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:var(--text-secondary);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+              دفع آمن
+            </div>
+            <div style="display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:var(--text-secondary);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              دعم 24/7
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Tabs -->
+      <div style="margin-top:4rem;" x-data="tabs">
+        <div style="display:flex;gap:0;border-bottom:1px solid var(--glass-border);margin-bottom:2rem;">
+          <button @click="setTab(0)" :style="isActive(0) ? 'border-bottom:2px solid var(--accent-blue);color:var(--text-primary)' : 'color:var(--text-muted)'" style="padding:1rem 2rem;font-family:var(--font-family);font-size:0.95rem;font-weight:600;background:none;border:none;cursor:pointer;transition:all 0.3s;">الوصف</button>
+          <button @click="setTab(1)" :style="isActive(1) ? 'border-bottom:2px solid var(--accent-blue);color:var(--text-primary)' : 'color:var(--text-muted)'" style="padding:1rem 2rem;font-family:var(--font-family);font-size:0.95rem;font-weight:600;background:none;border:none;cursor:pointer;transition:all 0.3s;">طريقة التفعيل</button>
+          <button @click="setTab(2)" :style="isActive(2) ? 'border-bottom:2px solid var(--accent-blue);color:var(--text-primary)' : 'color:var(--text-muted)'" style="padding:1rem 2rem;font-family:var(--font-family);font-size:0.95rem;font-weight:600;background:none;border:none;cursor:pointer;transition:all 0.3s;">التقييمات</button>
+        </div>
+
+        <div x-show="isActive(0)">
+          <div style="max-width:800px;">
+            <p style="margin-bottom:1rem;">اشتراك ChatGPT Plus الرسمي يمنحك وصولاً كاملاً لأحدث نماذج الذكاء الاصطناعي من OpenAI بما في ذلك GPT-4o و GPT-4 Turbo.</p>
+            <p style="margin-bottom:1rem;">مع ChatGPT Plus ستحصل على سرعة استجابة أعلى، أولوية في أوقات الذروة، وإمكانية استخدام جميع الأدوات المتقدمة مثل DALL-E 3 لتوليد الصور، تحليل الملفات، تصفح الإنترنت، والمزيد.</p>
+            <p>الاشتراك صالح لمدة شهر كامل (30 يوم) من تاريخ التفعيل.</p>
+          </div>
+        </div>
+
+        <div x-show="isActive(1)">
+          <div style="max-width:800px;">
+            <ol style="list-style:none;counter-reset:steps;display:flex;flex-direction:column;gap:1rem;">
+              <li style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-md);">
+                <span style="width:32px;height:32px;background:var(--accent-gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;">1</span>
+                <div><strong>أكمل عملية الشراء</strong><p style="font-size:0.9rem;margin-top:0.25rem;">اختر طريقة الدفع المناسبة وأكمل الطلب</p></div>
+              </li>
+              <li style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-md);">
+                <span style="width:32px;height:32px;background:var(--accent-gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;">2</span>
+                <div><strong>استلم البيانات</strong><p style="font-size:0.9rem;margin-top:0.25rem;">ستصلك بيانات الاشتراك فوراً على بريدك الإلكتروني</p></div>
+              </li>
+              <li style="display:flex;gap:1rem;align-items:flex-start;padding:1rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-md);">
+                <span style="width:32px;height:32px;background:var(--accent-gradient);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.85rem;flex-shrink:0;">3</span>
+                <div><strong>فعّل الاشتراك</strong><p style="font-size:0.9rem;margin-top:0.25rem;">اتبع التعليمات المرفقة لتفعيل اشتراكك والبدء بالاستخدام</p></div>
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <div x-show="isActive(2)">
+          <div style="display:flex;flex-direction:column;gap:1rem;max-width:800px;">
+            <div style="padding:1.5rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-md);">
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
+                <strong>محمد الأحمدي</strong>
+                <span style="color:#F59E0B;">★★★★★</span>
+              </div>
+              <p style="font-size:0.9rem;">ممتاز! الاشتراك شغال تمام وتفعيل فوري. أنصح الكل يشتري من هنا.</p>
+            </div>
+            <div style="padding:1.5rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-md);">
+              <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
+                <strong>سارة العتيبي</strong>
+                <span style="color:#F59E0B;">★★★★★</span>
+              </div>
+              <p style="font-size:0.9rem;">أفضل سعر لاشتراك ChatGPT Plus. جربت مواقع كثيرة وهذا أفضلهم.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product FAQ -->
+  <section class="section" style="background:var(--bg-secondary);" x-data="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>أسئلة عن <span class="gradient-text">المنتج</span></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item" :class="{ 'active': isOpen(0) }">
+          <div class="faq-question" @click="toggle(0)"><span>هل الاشتراك خاص بي فقط؟</span><span class="faq-icon">+</span></div>
+          <div class="faq-answer"><p>نعم، الاشتراك خاص بحسابك فقط ولا يتم مشاركته مع أحد.</p></div>
+        </div>
+        <div class="faq-item" :class="{ 'active': isOpen(1) }">
+          <div class="faq-question" @click="toggle(1)"><span>ماذا يحدث بعد انتهاء الشهر؟</span><span class="faq-icon">+</span></div>
+          <div class="faq-answer"><p>بعد انتهاء الشهر يمكنك تجديد الاشتراك من متجرنا بنفس السعر المميز.</p></div>
+        </div>
+        <div class="faq-item" :class="{ 'active': isOpen(2) }">
+          <div class="faq-question" @click="toggle(2)"><span>هل يمكنني استخدامه على الجوال؟</span><span class="faq-icon">+</span></div>
+          <div class="faq-answer"><p>نعم، يمكنك استخدام ChatGPT Plus على جميع الأجهزة: الكمبيوتر، الجوال، والتابلت.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Products -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>منتجات <span class="gradient-text">مشابهة</span></h2>
+      </div>
+      <div class="products-grid" style="grid-template-columns:repeat(auto-fill,minmax(250px,1fr));">
+        <div class="product-card">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#FF6B6B,#4ECDC4);display:flex;align-items:center;justify-content:center;"><span style="font-size:2rem;">🎨</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">ذكاء اصطناعي</span>
+            <h4 class="product-card-title">اشتراك Midjourney - شهر</h4>
+            <div class="product-card-footer"><span class="product-price">99 <span class="currency">ر.س</span></span><button class="btn btn-primary btn-sm" onclick="showToast('تمت الإضافة')">إضافة</button></div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;"><span style="font-size:2rem;">🧠</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">ذكاء اصطناعي</span>
+            <h4 class="product-card-title">اشتراك Claude Pro - شهر</h4>
+            <div class="product-card-footer"><span class="product-price">89 <span class="currency">ر.س</span></span><button class="btn btn-primary btn-sm" onclick="showToast('تمت الإضافة')">إضافة</button></div>
+          </div>
+        </div>
+        <div class="product-card">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#00D2FF,#3A7BD5);display:flex;align-items:center;justify-content:center;"><span style="font-size:2rem;">✨</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">ذكاء اصطناعي</span>
+            <h4 class="product-card-title">اشتراك Gemini Advanced - شهر</h4>
+            <div class="product-card-footer"><span class="product-price">69 <span class="currency">ر.س</span></span><button class="btn btn-primary btn-sm" onclick="showToast('تمت الإضافة')">إضافة</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding:2rem 0;">
+        <p>© 2024 Fluxora. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Purchase Button (Mobile) -->
+  <div class="mobile-cta-bar">
+    <div>
+      <span style="font-size:1.25rem;font-weight:700;background:var(--accent-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">79 ر.س</span>
+      <span style="font-size:0.75rem;color:var(--text-muted);text-decoration:line-through;margin-right:0.5rem;">99 ر.س</span>
+    </div>
+    <button class="btn btn-primary btn-sm" onclick="showToast('تمت الإضافة إلى السلة!')">أضف للسلة</button>
+  </div>
+
+  <style>
+    @media (max-width: 768px) {
+      .product-layout { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</body>
+</html>

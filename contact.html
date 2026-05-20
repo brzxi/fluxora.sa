@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تواصل معنا | Fluxora</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/animations.js" defer></script>
+</head>
+<body x-data="{ formStatus: '' }">
+  <div class="animated-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+  <div class="cursor-glow"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">Fluxora</a>
+        <ul class="nav-links" :class="{ 'active': $store.app.mobileMenuOpen }">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="category.html">المنتجات</a></li>
+          <li><a href="subscriptions.html">الاشتراكات</a></li>
+          <li><a href="offers.html">العروض</a></li>
+          <li><a href="about.html">من نحن</a></li>
+          <li><a href="contact.html" style="color:var(--text-primary);">تواصل معنا</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="nav-cart" aria-label="سلة التسوق"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+          <button class="mobile-toggle" @click="$store.app.toggleMobileMenu()" aria-label="القائمة"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section style="padding:5rem 0 2rem;text-align:center;">
+    <div class="container">
+      <h1 class="fade-in" style="font-size:2.5rem;">تواصل <span class="gradient-text">معنا</span></h1>
+      <p class="fade-in" style="margin-top:0.75rem;">نحن هنا لمساعدتك. تواصل معنا بأي طريقة تناسبك</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" style="padding-top:1rem;">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="contact-grid">
+        
+        <!-- Contact Form -->
+        <div class="glass fade-in" style="padding:2.5rem;">
+          <h3 style="margin-bottom:1.5rem;">أرسل لنا رسالة</h3>
+          <form @submit.prevent="formStatus = 'success'; showToast('تم إرسال رسالتك بنجاح!')">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem;">
+              <div>
+                <label style="display:block;font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.5rem;">الاسم</label>
+                <input type="text" class="input-field" placeholder="اسمك الكامل" required>
+              </div>
+              <div>
+                <label style="display:block;font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.5rem;">البريد الإلكتروني</label>
+                <input type="email" class="input-field" placeholder="email@example.com" required>
+              </div>
+            </div>
+            <div style="margin-bottom:1rem;">
+              <label style="display:block;font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.5rem;">الموضوع</label>
+              <select class="input-field">
+                <option>استفسار عام</option>
+                <option>مشكلة في طلب</option>
+                <option>طلب استرداد</option>
+                <option>اقتراح</option>
+                <option>أخرى</option>
+              </select>
+            </div>
+            <div style="margin-bottom:1.5rem;">
+              <label style="display:block;font-size:0.85rem;color:var(--text-secondary);margin-bottom:0.5rem;">الرسالة</label>
+              <textarea class="input-field" rows="5" placeholder="اكتب رسالتك هنا..." style="resize:vertical;" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg" style="width:100%;">إرسال الرسالة</button>
+          </form>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="fade-in" style="animation-delay:0.2s;">
+          <div style="display:flex;flex-direction:column;gap:1.5rem;">
+            <!-- WhatsApp -->
+            <a href="#" class="glass-card" style="padding:1.5rem;display:flex;align-items:center;gap:1rem;text-decoration:none;">
+              <div style="width:48px;height:48px;background:rgba(37,211,102,0.15);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#25D366"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+              </div>
+              <div>
+                <h4 style="font-size:0.95rem;margin-bottom:0.25rem;">واتساب</h4>
+                <span style="color:var(--text-secondary);font-size:0.85rem;">+966 50 000 0000</span>
+              </div>
+            </a>
+
+            <!-- Email -->
+            <a href="#" class="glass-card" style="padding:1.5rem;display:flex;align-items:center;gap:1rem;text-decoration:none;">
+              <div style="width:48px;height:48px;background:rgba(59,130,246,0.15);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue)" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <div>
+                <h4 style="font-size:0.95rem;margin-bottom:0.25rem;">البريد الإلكتروني</h4>
+                <span style="color:var(--text-secondary);font-size:0.85rem;">support@fluxora.sa</span>
+              </div>
+            </a>
+
+            <!-- Twitter -->
+            <a href="#" class="glass-card" style="padding:1.5rem;display:flex;align-items:center;gap:1rem;text-decoration:none;">
+              <div style="width:48px;height:48px;background:rgba(139,92,246,0.15);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--accent-violet)"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </div>
+              <div>
+                <h4 style="font-size:0.95rem;margin-bottom:0.25rem;">تويتر (X)</h4>
+                <span style="color:var(--text-secondary);font-size:0.85rem;">@FluxoraSA</span>
+              </div>
+            </a>
+
+            <!-- Working Hours -->
+            <div class="glass-card" style="padding:1.5rem;display:flex;align-items:center;gap:1rem;">
+              <div style="width:48px;height:48px;background:rgba(34,197,94,0.15);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                <h4 style="font-size:0.95rem;margin-bottom:0.25rem;">ساعات العمل</h4>
+                <span style="color:var(--text-secondary);font-size:0.85rem;">24/7 - متاحين دائماً</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ Link -->
+          <div style="margin-top:2rem;padding:1.5rem;background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-lg);text-align:center;">
+            <p style="font-size:0.9rem;margin-bottom:1rem;">هل لديك سؤال شائع؟</p>
+            <a href="index.html#faq" class="btn btn-secondary btn-sm">تصفح الأسئلة الشائعة</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding:2rem 0;">
+        <p>© 2024 Fluxora. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr !important; } }
+  </style>
+</body>
+</html>

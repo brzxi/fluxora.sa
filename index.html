@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="فلكسورا - وجهتك الأولى للمنتجات الرقمية والاشتراكات وأدوات الذكاء الاصطناعي في السعودية">
+  <meta name="keywords" content="اشتراكات رقمية, ذكاء اصطناعي, حسابات ألعاب, بث, نتفلكس, شاهد, ChatGPT">
+  <meta property="og:title" content="Fluxora - مستقبل التقنية يبدأ من هنا">
+  <meta property="og:description" content="اكتشف أحدث الاشتراكات الرقمية وأدوات الذكاء الاصطناعي بأفضل الأسعار">
+  <meta property="og:type" content="website">
+  <title>Fluxora | مستقبل التقنية يبدأ من هنا</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/animations.js" defer></script>
+</head>
+<body x-data>
+
+  <!-- Animated Background -->
+  <div class="animated-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <!-- Particles -->
+  <div class="particles-container"></div>
+
+  <!-- Cursor Glow -->
+  <div class="cursor-glow"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="/" class="nav-logo">Fluxora</a>
+        <ul class="nav-links" :class="{ 'active': $store.app.mobileMenuOpen }">
+          <li><a href="/">الرئيسية</a></li>
+          <li><a href="category.html">المنتجات</a></li>
+          <li><a href="subscriptions.html">الاشتراكات</a></li>
+          <li><a href="offers.html">العروض</a></li>
+          <li><a href="about.html">من نحن</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button class="nav-cart" @click="$store.app.searchOpen = !$store.app.searchOpen" aria-label="بحث">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </button>
+          <a href="cart.html" class="nav-cart" aria-label="سلة التسوق">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span class="count" x-show="$store.app.cartCount > 0" x-text="$store.app.cartCount"></span>
+          </a>
+          <button class="mobile-toggle" @click="$store.app.toggleMobileMenu()" aria-label="القائمة">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="hero">
+    <div class="hero-grid"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-badge fade-in">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>منصة المنتجات الرقمية #1 في السعودية</span>
+        </div>
+
+        <h1 class="fade-in" style="animation-delay:0.1s;">
+          مستقبل <span class="gradient-text">التقنية</span><br>يبدأ من هنا
+        </h1>
+
+        <p class="fade-in" style="animation-delay:0.2s;">
+          اكتشف أحدث الاشتراكات الرقمية وأدوات الذكاء الاصطناعي وحسابات الألعاب بأفضل الأسعار. تسليم فوري وضمان كامل.
+        </p>
+
+        <div class="hero-actions fade-in" style="animation-delay:0.3s;">
+          <a href="category.html" class="btn btn-primary btn-lg">
+            تصفح المنتجات
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+          </a>
+          <a href="subscriptions.html" class="btn btn-secondary btn-lg">
+            الاشتراكات الرقمية
+          </a>
+        </div>
+
+        <!-- Trust Indicators -->
+        <div class="trust-badges fade-in" style="animation-delay:0.4s;margin-top:3rem;">
+          <div class="trust-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--success)"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            <span>تسليم فوري</span>
+          </div>
+          <div class="trust-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--success)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>ضمان 100%</span>
+          </div>
+          <div class="trust-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--success)"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>+50,000 عميل</span>
+          </div>
+          <div class="trust-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--success)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <span>تقييم 4.9/5</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FEATURED PRODUCTS ==================== -->
+  <section class="section" id="products">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge badge-gradient" style="margin-bottom:1rem;display:inline-flex;">الأكثر مبيعاً</span>
+        <h2>منتجات <span class="gradient-text">مميزة</span></h2>
+        <p>اكتشف أكثر المنتجات الرقمية طلباً هذا الأسبوع</p>
+      </div>
+
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card fade-in">
+          <div class="product-card-image">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:2.5rem;">🤖</span>
+            </div>
+            <div class="product-card-badge">
+              <span class="badge badge-success">الأكثر مبيعاً</span>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-category">ذكاء اصطناعي</span>
+            <h4 class="product-card-title">اشتراك ChatGPT Plus - شهر كامل</h4>
+            <div class="product-card-footer">
+              <div>
+                <span class="product-price">79 <span class="currency">ر.س</span></span>
+                <span class="product-old-price">99 ر.س</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="showToast('تمت الإضافة للسلة')">إضافة</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card fade-in">
+          <div class="product-card-image">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,#e50914,#831010);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:2.5rem;">🎬</span>
+            </div>
+            <div class="product-card-badge">
+              <span class="badge badge-gradient">خصم 30%</span>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-category">اشتراكات البث</span>
+            <h4 class="product-card-title">اشتراك Netflix Premium - 3 أشهر</h4>
+            <div class="product-card-footer">
+              <div>
+                <span class="product-price">149 <span class="currency">ر.س</span></span>
+                <span class="product-old-price">210 ر.س</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="showToast('تمت الإضافة للسلة')">إضافة</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card fade-in">
+          <div class="product-card-image">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,#1DB954,#0d5c2a);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:2.5rem;">🎵</span>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-category">اشتراكات البث</span>
+            <h4 class="product-card-title">اشتراك Spotify Premium - سنة كاملة</h4>
+            <div class="product-card-footer">
+              <div>
+                <span class="product-price">199 <span class="currency">ر.س</span></span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="showToast('تمت الإضافة للسلة')">إضافة</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card fade-in">
+          <div class="product-card-image">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,#5865F2,#2d3380);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:2.5rem;">🎮</span>
+            </div>
+            <div class="product-card-badge">
+              <span class="badge badge-success">جديد</span>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-category">حسابات ألعاب</span>
+            <h4 class="product-card-title">حساب PlayStation Plus Premium - سنة</h4>
+            <div class="product-card-footer">
+              <div>
+                <span class="product-price">249 <span class="currency">ر.س</span></span>
+                <span class="product-old-price">350 ر.س</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="showToast('تمت الإضافة للسلة')">إضافة</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card fade-in">
+          <div class="product-card-image">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,#FF6B6B,#4ECDC4);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:2.5rem;">🎨</span>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-category">أدوات تصميم</span>
+            <h4 class="product-card-title">اشتراك Canva Pro - سنة كاملة</h4>
+            <div class="product-card-footer">
+              <div>
+                <span class="product-price">129 <span class="currency">ر.س</span></span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="showToast('تمت الإضافة للسلة')">إضافة</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card fade-in">
+          <div class="product-card-image">
+            <div style="position:absolute;inset:0;background:linear-gradient(135deg,#00D2FF,#3A7BD5);display:flex;align-items:center;justify-content:center;">
+              <span style="font-size:2.5rem;">☁️</span>
+            </div>
+            <div class="product-card-badge">
+              <span class="badge badge-gradient">حصري</span>
+            </div>
+          </div>
+          <div class="product-card-body">
+            <span class="product-card-category">تخزين سحابي</span>
+            <h4 class="product-card-title">اشتراك iCloud+ 2TB - سنة كاملة</h4>
+            <div class="product-card-footer">
+              <div>
+                <span class="product-price">179 <span class="currency">ر.س</span></span>
+                <span class="product-old-price">240 ر.س</span>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="showToast('تمت الإضافة للسلة')">إضافة</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:3rem;">
+        <a href="category.html" class="btn btn-secondary">عرض جميع المنتجات ←</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== WHY CHOOSE US ==================== -->
+  <section class="section" style="background:var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <h2>لماذا <span class="gradient-text">فلكسورا</span>؟</h2>
+        <p>نقدم لك تجربة شراء رقمية لا مثيل لها</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">⚡</div>
+          <h4>تسليم فوري</h4>
+          <p>استلم منتجك الرقمي خلال ثوانٍ من إتمام الدفع. نظام آلي يعمل على مدار الساعة.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🛡️</div>
+          <h4>ضمان شامل</h4>
+          <p>ضمان كامل على جميع المنتجات مع دعم فني متاح 24/7 لحل أي مشكلة.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">💰</div>
+          <h4>أفضل الأسعار</h4>
+          <p>أسعار تنافسية لا تجدها في أي مكان آخر مع عروض وخصومات مستمرة.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🔒</div>
+          <h4>دفع آمن</h4>
+          <p>جميع المعاملات مشفرة ومحمية. ندعم Apple Pay ومدى وجميع البطاقات.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🌟</div>
+          <h4>منتجات أصلية</h4>
+          <p>جميع الاشتراكات والحسابات أصلية 100% من المصدر الرسمي مباشرة.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🎯</div>
+          <h4>دعم سعودي</h4>
+          <p>فريق دعم سعودي متخصص يفهم احتياجاتك ويتحدث لغتك.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STATS ==================== -->
+  <section class="section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card fade-in">
+          <div class="stat-number" data-counter="50000" data-suffix="+">0</div>
+          <div class="stat-label">عميل سعيد</div>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-number" data-counter="120000" data-suffix="+">0</div>
+          <div class="stat-label">طلب مكتمل</div>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-number" data-counter="500" data-suffix="+">0</div>
+          <div class="stat-label">منتج رقمي</div>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-number" data-counter="49" data-suffix="/5" data-prefix="">0</div>
+          <div class="stat-label">تقييم العملاء</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CUSTOMER REVIEWS ==================== -->
+  <section class="section" style="background:var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <h2>ماذا يقول <span class="gradient-text">عملاؤنا</span></h2>
+        <p>آراء حقيقية من عملاء حقيقيين</p>
+      </div>
+
+      <div class="reviews-carousel">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">تجربة ممتازة! طلبت اشتراك ChatGPT Plus ووصلني خلال دقيقة واحدة. الأسعار أفضل من أي مكان ثاني. أنصح الكل يجرب.</p>
+          <div class="review-author">
+            <div class="review-avatar">م.أ</div>
+            <div>
+              <div class="review-name">محمد الأحمدي</div>
+              <div class="review-date">قبل 3 أيام</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">أفضل متجر للمنتجات الرقمية في السعودية. جربت أكثر من 5 متاجر وهذا أفضلهم من ناحية السرعة والدعم والأسعار.</p>
+          <div class="review-author">
+            <div class="review-avatar">س.ع</div>
+            <div>
+              <div class="review-name">سارة العتيبي</div>
+              <div class="review-date">قبل أسبوع</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">اشتريت اشتراك Netflix و Spotify وكلهم شغالين تمام. الدعم الفني رهيب وسريع جداً. شكراً فلكسورا!</p>
+          <div class="review-author">
+            <div class="review-avatar">ف.خ</div>
+            <div>
+              <div class="review-name">فهد الخالدي</div>
+              <div class="review-date">قبل أسبوعين</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">المتجر الوحيد اللي أثق فيه للمنتجات الرقمية. كل شي واضح ومنظم والتسليم فوري. ما راح أشتري من مكان ثاني.</p>
+          <div class="review-author">
+            <div class="review-avatar">ن.ر</div>
+            <div>
+              <div class="review-name">نورة الراشد</div>
+              <div class="review-date">قبل شهر</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">حساب PlayStation Plus وصلني بسرعة وشغال ممتاز. أسعارهم أرخص من السوق بفرق كبير. تجربة 10/10</p>
+          <div class="review-author">
+            <div class="review-avatar">ع.م</div>
+            <div>
+              <div class="review-name">عبدالله المطيري</div>
+              <div class="review-date">قبل شهر</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="section" id="faq" x-data="faq">
+    <div class="container">
+      <div class="section-header">
+        <h2>الأسئلة <span class="gradient-text">الشائعة</span></h2>
+        <p>إجابات لأكثر الأسئلة شيوعاً</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item" :class="{ 'active': isOpen(0) }">
+          <div class="faq-question" @click="toggle(0)">
+            <span>كيف أستلم المنتج بعد الشراء؟</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>بعد إتمام عملية الدفع، ستصلك بيانات المنتج فوراً عبر البريد الإلكتروني وفي صفحة الطلب. التسليم يتم خلال ثوانٍ معدودة بشكل آلي.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" :class="{ 'active': isOpen(1) }">
+          <div class="faq-question" @click="toggle(1)">
+            <span>هل المنتجات أصلية ومضمونة؟</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>نعم، جميع منتجاتنا أصلية 100% ومصدرها رسمي. نقدم ضمان كامل على جميع المنتجات، وفي حال وجود أي مشكلة نقوم بالاستبدال الفوري أو استرداد المبلغ.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" :class="{ 'active': isOpen(2) }">
+          <div class="faq-question" @click="toggle(2)">
+            <span>ما هي طرق الدفع المتاحة؟</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>نقبل جميع طرق الدفع: Apple Pay، مدى، Visa، Mastercard، STC Pay، تمارا (تقسيط)، والتحويل البنكي. جميع المعاملات مشفرة وآمنة.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" :class="{ 'active': isOpen(3) }">
+          <div class="faq-question" @click="toggle(3)">
+            <span>هل يمكنني استرداد المبلغ؟</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>نعم، نقدم سياسة استرداد مرنة. في حال عدم عمل المنتج أو وجود مشكلة، يمكنك طلب الاسترداد خلال 48 ساعة من الشراء وسنقوم بمعالجة طلبك فوراً.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" :class="{ 'active': isOpen(4) }">
+          <div class="faq-question" @click="toggle(4)">
+            <span>كيف أتواصل مع الدعم الفني؟</span>
+            <span class="faq-icon">+</span>
+          </div>
+          <div class="faq-answer">
+            <p>يمكنك التواصل معنا عبر الواتساب، البريد الإلكتروني، أو الدردشة المباشرة في الموقع. فريق الدعم متاح 24/7 لمساعدتك.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== NEWSLETTER ==================== -->
+  <section class="section">
+    <div class="container">
+      <div class="newsletter fade-in" x-data="newsletter">
+        <h2 style="position:relative;z-index:1;">احصل على <span class="gradient-text">عروض حصرية</span></h2>
+        <p style="position:relative;z-index:1;margin-top:0.75rem;">اشترك في نشرتنا البريدية واحصل على خصم 10% على أول طلب</p>
+        
+        <div class="newsletter-form">
+          <input type="email" class="input-field" placeholder="بريدك الإلكتروني" x-model="email" @keyup.enter="submit()">
+          <button class="btn btn-primary" @click="submit()" :disabled="status === 'loading'">
+            <span x-show="status !== 'loading'">اشترك الآن</span>
+            <span x-show="status === 'loading'">جاري...</span>
+          </button>
+        </div>
+
+        <p x-show="message" x-text="message" style="margin-top:1rem;position:relative;z-index:1;font-size:0.9rem;" :style="status === 'success' ? 'color:var(--success)' : 'color:var(--error)'"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="nav-logo" style="font-size:1.75rem;">Fluxora</a>
+          <p>وجهتك الأولى للمنتجات الرقمية والاشتراكات في المملكة العربية السعودية. نقدم لك أفضل أدوات الذكاء الاصطناعي واشتراكات البث وحسابات الألعاب بأسعار تنافسية.</p>
+          <div class="footer-social" style="margin-top:1.5rem;">
+            <a href="#" aria-label="تويتر"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" aria-label="انستقرام"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></a>
+            <a href="#" aria-label="تيك توك"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.88 2.89 2.89 0 0 1-2.88-2.88 2.89 2.89 0 0 1 2.88-2.88c.28 0 .56.04.82.11v-3.5a6.37 6.37 0 0 0-.82-.05A6.34 6.34 0 0 0 3.15 15.6 6.34 6.34 0 0 0 9.49 22a6.34 6.34 0 0 0 6.34-6.34V9.4a8.16 8.16 0 0 0 3.76.92V6.87z"/></svg></a>
+            <a href="#" aria-label="واتساب"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">روابط سريعة</h4>
+          <ul class="footer-links">
+            <li><a href="/">الرئيسية</a></li>
+            <li><a href="category.html">جميع المنتجات</a></li>
+            <li><a href="offers.html">العروض الحصرية</a></li>
+            <li><a href="subscriptions.html">الاشتراكات</a></li>
+            <li><a href="about.html">من نحن</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">الأقسام</h4>
+          <ul class="footer-links">
+            <li><a href="#">اشتراكات البث</a></li>
+            <li><a href="#">أدوات الذكاء الاصطناعي</a></li>
+            <li><a href="#">حسابات الألعاب</a></li>
+            <li><a href="#">البرامج والتطبيقات</a></li>
+            <li><a href="#">بطاقات الهدايا</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">الدعم</h4>
+          <ul class="footer-links">
+            <li><a href="contact.html">تواصل معنا</a></li>
+            <li><a href="#">سياسة الاسترجاع</a></li>
+            <li><a href="#">الشروط والأحكام</a></li>
+            <li><a href="#">سياسة الخصوصية</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;padding:2rem 0;border-top:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);margin-bottom:2rem;flex-wrap:wrap;">
+        <span style="font-size:0.85rem;color:var(--text-muted);">طرق الدفع:</span>
+        <div style="display:flex;gap:0.75rem;align-items:center;flex-wrap:wrap;">
+          <span class="badge badge-glass">Visa</span>
+          <span class="badge badge-glass">Mastercard</span>
+          <span class="badge badge-glass">Apple Pay</span>
+          <span class="badge badge-glass">مدى</span>
+          <span class="badge badge-glass">STC Pay</span>
+          <span class="badge badge-glass">تمارا</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2024 Fluxora. جميع الحقوق محفوظة.</p>
+        <div style="display:flex;gap:1.5rem;font-size:0.85rem;">
+          <a href="#" style="color:var(--text-muted);">سياسة الخصوصية</a>
+          <a href="#" style="color:var(--text-muted);">الشروط والأحكام</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Mobile CTA Bar -->
+  <div class="mobile-cta-bar">
+    <div>
+      <span style="font-size:0.8rem;color:var(--text-muted);">تصفح المنتجات</span>
+      <div style="font-weight:700;font-size:0.95rem;">خصومات تصل 50%</div>
+    </div>
+    <a href="category.html" class="btn btn-primary btn-sm">تسوق الآن</a>
+  </div>
+
+</body>
+</html>

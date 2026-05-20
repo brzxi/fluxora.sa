@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="تصفح جميع المنتجات الرقمية - اشتراكات، أدوات ذكاء اصطناعي، حسابات ألعاب | فلكسورا">
+  <title>جميع المنتجات | Fluxora</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/animations.js" defer></script>
+</head>
+<body x-data="{ activeFilter: 'all', sortBy: 'popular' }">
+
+  <div class="animated-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+  <div class="particles-container"></div>
+  <div class="cursor-glow"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">Fluxora</a>
+        <ul class="nav-links" :class="{ 'active': $store.app.mobileMenuOpen }">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="category.html" style="color:var(--text-primary);">المنتجات</a></li>
+          <li><a href="subscriptions.html">الاشتراكات</a></li>
+          <li><a href="offers.html">العروض</a></li>
+          <li><a href="about.html">من نحن</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="nav-cart" aria-label="سلة التسوق">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+            <span class="count" x-show="$store.app.cartCount > 0" x-text="$store.app.cartCount"></span>
+          </a>
+          <button class="mobile-toggle" @click="$store.app.toggleMobileMenu()" aria-label="القائمة"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section style="padding:3rem 0 2rem;text-align:center;">
+    <div class="container">
+      <h1 class="fade-in" style="font-size:2.5rem;">جميع <span class="gradient-text">المنتجات</span></h1>
+      <p class="fade-in" style="margin-top:0.75rem;">اكتشف مجموعتنا الكاملة من المنتجات الرقمية والاشتراكات</p>
+    </div>
+  </section>
+
+  <!-- Filters & Products -->
+  <section class="section" style="padding-top:1rem;">
+    <div class="container">
+      <!-- Filter Bar -->
+      <div class="glass fade-in" style="padding:1.25rem;margin-bottom:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <!-- Category Filters -->
+        <div style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <button @click="activeFilter = 'all'" :class="activeFilter === 'all' ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm'">الكل</button>
+          <button @click="activeFilter = 'ai'" :class="activeFilter === 'ai' ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm'">ذكاء اصطناعي</button>
+          <button @click="activeFilter = 'streaming'" :class="activeFilter === 'streaming' ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm'">بث</button>
+          <button @click="activeFilter = 'gaming'" :class="activeFilter === 'gaming' ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm'">ألعاب</button>
+          <button @click="activeFilter = 'design'" :class="activeFilter === 'design' ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm'">تصميم</button>
+          <button @click="activeFilter = 'cloud'" :class="activeFilter === 'cloud' ? 'btn btn-primary btn-sm' : 'btn btn-secondary btn-sm'">سحابي</button>
+        </div>
+
+        <!-- Sort -->
+        <select x-model="sortBy" class="input-field" style="width:auto;padding:0.5rem 1rem;font-size:0.85rem;">
+          <option value="popular">الأكثر مبيعاً</option>
+          <option value="newest">الأحدث</option>
+          <option value="price-low">السعر: الأقل</option>
+          <option value="price-high">السعر: الأعلى</option>
+        </select>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid">
+        <!-- Product 1 -->
+        <div class="product-card" x-show="activeFilter === 'all' || activeFilter === 'ai'">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">🤖</span></div><div class="product-card-badge"><span class="badge badge-success">الأكثر مبيعاً</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">ذكاء اصطناعي</span>
+            <h4 class="product-card-title">اشتراك ChatGPT Plus - شهر كامل</h4>
+            <div class="product-card-footer"><div><span class="product-price">79 <span class="currency">ر.س</span></span><span class="product-old-price">99 ر.س</span></div><a href="product.html" class="btn btn-primary btn-sm">عرض</a></div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card" x-show="activeFilter === 'all' || activeFilter === 'streaming'">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#e50914,#831010);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">🎬</span></div><div class="product-card-badge"><span class="badge badge-gradient">خصم 30%</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">اشتراكات البث</span>
+            <h4 class="product-card-title">اشتراك Netflix Premium - 3 أشهر</h4>
+            <div class="product-card-footer"><div><span class="product-price">149 <span class="currency">ر.س</span></span><span class="product-old-price">210 ر.س</span></div><a href="product.html" class="btn btn-primary btn-sm">عرض</a></div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card" x-show="activeFilter === 'all' || activeFilter === 'streaming'">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#1DB954,#0d5c2a);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">🎵</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">اشتراكات البث</span>
+            <h4 class="product-card-title">اشتراك Spotify Premium - سنة</h4>
+            <div class="product-card-footer"><div><span class="product-price">199 <span class="currency">ر.س</span></span></div><a href="product.html" class="btn btn-primary btn-sm">عرض</a></div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card" x-show="activeFilter === 'all' || activeFilter === 'gaming'">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#5865F2,#2d3380);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">🎮</span></div><div class="product-card-badge"><span class="badge badge-success">جديد</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">حسابات ألعاب</span>
+            <h4 class="product-card-title">حساب PlayStation Plus Premium - سنة</h4>
+            <div class="product-card-footer"><div><span class="product-price">249 <span class="currency">ر.س</span></span><span class="product-old-price">350 ر.س</span></div><a href="product.html" class="btn btn-primary btn-sm">عرض</a></div>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card" x-show="activeFilter === 'all' || activeFilter === 'design'">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#FF6B6B,#4ECDC4);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">🎨</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">أدوات تصميم</span>
+            <h4 class="product-card-title">اشتراك Canva Pro - سنة كاملة</h4>
+            <div class="product-card-footer"><div><span class="product-price">129 <span class="currency">ر.س</span></span></div><a href="product.html" class="btn btn-primary btn-sm">عرض</a></div>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card" x-show="activeFilter === 'all' || activeFilter === 'cloud'">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#00D2FF,#3A7BD5);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">☁️</span></div><div class="product-card-badge"><span class="badge badge-gradient">حصري</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">تخزين سحابي</span>
+            <h4 class="product-card-title">اشتراك iCloud+ 2TB - سنة</h4>
+            <div class="product-card-footer"><div><span class="product-price">179 <span class="currency">ر.س</span></span><span class="product-old-price">240 ر.س</span></div><a href="product.html" class="btn btn-primary btn-sm">عرض</a></div>
+          </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card" x-show="activeFilter === 'all' || activeFilter === 'ai'">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#FF6B6B,#4ECDC4);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">🎨</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">ذكاء اصطناعي</span>
+            <h4 class="product-card-title">اشتراك Midjourney Standard - شهر</h4>
+            <div class="product-card-footer"><div><span class="product-price">99 <span class="currency">ر.س</span></span></div><a href="product.html" class="btn btn-primary btn-sm">عرض</a></div>
+          </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card" x-show="activeFilter === 'all' || activeFilter === 'gaming'">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#107C10,#0a4a0a);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">🎯</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">حسابات ألعاب</span>
+            <h4 class="product-card-title">Xbox Game Pass Ultimate - 3 أشهر</h4>
+            <div class="product-card-footer"><div><span class="product-price">159 <span class="currency">ر.س</span></span></div><a href="product.html" class="btn btn-primary btn-sm">عرض</a></div>
+          </div>
+        </div>
+
+        <!-- Product 9 -->
+        <div class="product-card" x-show="activeFilter === 'all' || activeFilter === 'streaming'">
+          <div class="product-card-image"><div style="position:absolute;inset:0;background:linear-gradient(135deg,#6441A5,#2a0845);display:flex;align-items:center;justify-content:center;"><span style="font-size:2.5rem;">📺</span></div></div>
+          <div class="product-card-body">
+            <span class="product-card-category">اشتراكات البث</span>
+            <h4 class="product-card-title">اشتراك شاهد VIP - 6 أشهر</h4>
+            <div class="product-card-footer"><div><span class="product-price">89 <span class="currency">ر.س</span></span></div><a href="product.html" class="btn btn-primary btn-sm">عرض</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Load More -->
+      <div style="text-align:center;margin-top:3rem;">
+        <button class="btn btn-secondary">تحميل المزيد</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding:2rem 0;">
+        <p>© 2024 Fluxora. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

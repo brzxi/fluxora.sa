@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - الصفحة غير موجودة | Fluxora</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/animations.js" defer></script>
+</head>
+<body x-data>
+  <div class="animated-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="orb orb-3"></div></div>
+  <div class="particles-container"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">Fluxora</a>
+        <ul class="nav-links" :class="{ 'active': $store.app.mobileMenuOpen }">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="category.html">المنتجات</a></li>
+          <li><a href="subscriptions.html">الاشتراكات</a></li>
+          <li><a href="offers.html">العروض</a></li>
+          <li><a href="about.html">من نحن</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="nav-cart" aria-label="سلة التسوق"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+          <button class="mobile-toggle" @click="$store.app.toggleMobileMenu()" aria-label="القائمة"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 404 Content -->
+  <section style="min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:2rem;">
+    <div class="container">
+      <div class="fade-in">
+        <!-- Animated 404 -->
+        <div style="position:relative;margin-bottom:2rem;">
+          <h1 style="font-size:clamp(8rem,20vw,12rem);font-weight:900;background:var(--accent-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;opacity:0.8;letter-spacing:-0.05em;">404</h1>
+          <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <div style="width:120px;height:120px;background:var(--accent-gradient);border-radius:50%;opacity:0.1;filter:blur(40px);animation:float 6s infinite ease-in-out;"></div>
+          </div>
+        </div>
+
+        <h2 style="font-size:1.75rem;margin-bottom:1rem;">الصفحة غير موجودة</h2>
+        <p style="max-width:500px;margin:0 auto 2.5rem;font-size:1.05rem;">يبدو أن الصفحة التي تبحث عنها غير موجودة أو تم نقلها. لا تقلق، يمكنك العودة للتصفح.</p>
+
+        <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+          <a href="index.html" class="btn btn-primary btn-lg">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            العودة للرئيسية
+          </a>
+          <a href="category.html" class="btn btn-secondary btn-lg">تصفح المنتجات</a>
+        </div>
+
+        <!-- Suggestions -->
+        <div style="margin-top:4rem;">
+          <p style="font-size:0.9rem;color:var(--text-muted);margin-bottom:1.5rem;">أو جرب هذه الروابط:</p>
+          <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+            <a href="offers.html" class="badge badge-glass" style="padding:0.5rem 1rem;font-size:0.85rem;text-decoration:none;">العروض</a>
+            <a href="subscriptions.html" class="badge badge-glass" style="padding:0.5rem 1rem;font-size:0.85rem;text-decoration:none;">الاشتراكات</a>
+            <a href="contact.html" class="badge badge-glass" style="padding:0.5rem 1rem;font-size:0.85rem;text-decoration:none;">تواصل معنا</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding:2rem 0;">
+        <p>© 2024 Fluxora. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سلة التسوق | Fluxora</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/animations.js" defer></script>
+</head>
+<body x-data="{ items: [{id:1, name:'اشتراك ChatGPT Plus - شهر', price:79, qty:1, icon:'🤖', color:'#667eea'}, {id:2, name:'اشتراك Netflix Premium - 3 أشهر', price:149, qty:1, icon:'🎬', color:'#e50914'}], coupon: '', couponApplied: false, discount: 0 }">
+
+  <div class="animated-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+  <div class="cursor-glow"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">Fluxora</a>
+        <ul class="nav-links" :class="{ 'active': $store.app.mobileMenuOpen }">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="category.html">المنتجات</a></li>
+          <li><a href="subscriptions.html">الاشتراكات</a></li>
+          <li><a href="offers.html">العروض</a></li>
+          <li><a href="about.html">من نحن</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="nav-cart" aria-label="سلة التسوق" style="color:var(--text-primary);">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+          </a>
+          <button class="mobile-toggle" @click="$store.app.toggleMobileMenu()" aria-label="القائمة"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Cart Section -->
+  <section class="section">
+    <div class="container">
+      <h1 class="fade-in" style="font-size:2rem;margin-bottom:2rem;">سلة <span class="gradient-text">التسوق</span></h1>
+
+      <div style="display:grid;grid-template-columns:1fr 380px;gap:2rem;align-items:start;" class="cart-layout">
+        <!-- Cart Items -->
+        <div style="display:flex;flex-direction:column;gap:1rem;">
+          <template x-for="item in items" :key="item.id">
+            <div class="cart-item fade-in">
+              <div style="width:70px;height:70px;border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;" :style="'background:' + item.color">
+                <span style="font-size:1.75rem;" x-text="item.icon"></span>
+              </div>
+              <div style="flex:1;">
+                <h4 style="font-size:0.95rem;margin-bottom:0.25rem;" x-text="item.name"></h4>
+                <span style="font-size:0.8rem;color:var(--text-muted);">تسليم فوري</span>
+              </div>
+              <div style="display:flex;align-items:center;gap:1rem;">
+                <div style="display:flex;align-items:center;gap:0.5rem;background:var(--bg-tertiary);border-radius:var(--radius-sm);padding:0.25rem;">
+                  <button @click="item.qty = Math.max(1, item.qty - 1)" style="width:28px;height:28px;border:none;background:none;color:var(--text-primary);cursor:pointer;font-size:1.1rem;">-</button>
+                  <span style="width:24px;text-align:center;font-size:0.9rem;" x-text="item.qty"></span>
+                  <button @click="item.qty++" style="width:28px;height:28px;border:none;background:none;color:var(--text-primary);cursor:pointer;font-size:1.1rem;">+</button>
+                </div>
+                <span style="font-weight:700;min-width:60px;text-align:left;" x-text="(item.price * item.qty) + ' ر.س'"></span>
+                <button @click="items = items.filter(i => i.id !== item.id)" style="color:var(--text-muted);background:none;border:none;cursor:pointer;padding:0.5rem;" aria-label="حذف">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/></svg>
+                </button>
+              </div>
+            </div>
+          </template>
+
+          <!-- Empty State -->
+          <div x-show="items.length === 0" class="glass" style="padding:4rem;text-align:center;">
+            <span style="font-size:4rem;display:block;margin-bottom:1rem;">🛒</span>
+            <h3 style="margin-bottom:0.5rem;">السلة فارغة</h3>
+            <p style="margin-bottom:1.5rem;">لم تقم بإضافة أي منتجات بعد</p>
+            <a href="category.html" class="btn btn-primary">تصفح المنتجات</a>
+          </div>
+        </div>
+
+        <!-- Cart Summary -->
+        <div class="cart-summary fade-in" x-show="items.length > 0">
+          <h3 style="margin-bottom:1.5rem;font-size:1.1rem;">ملخص الطلب</h3>
+
+          <!-- Coupon -->
+          <div style="display:flex;gap:0.5rem;margin-bottom:1.5rem;">
+            <input type="text" class="input-field" placeholder="كود الخصم" x-model="coupon" style="font-size:0.85rem;">
+            <button class="btn btn-secondary btn-sm" @click="if(coupon === 'FLUX10') { couponApplied = true; discount = 10; showToast('تم تطبيق الكود!'); } else { showToast('كود غير صالح', 'error'); }">تطبيق</button>
+          </div>
+
+          <div style="display:flex;flex-direction:column;gap:0.75rem;padding-bottom:1.5rem;border-bottom:1px solid var(--glass-border);">
+            <div style="display:flex;justify-content:space-between;font-size:0.9rem;">
+              <span style="color:var(--text-secondary);">المجموع الفرعي</span>
+              <span x-text="items.reduce((s, i) => s + i.price * i.qty, 0) + ' ر.س'"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.9rem;" x-show="couponApplied">
+              <span style="color:var(--success);">خصم الكوبون</span>
+              <span style="color:var(--success);" x-text="'-' + discount + '%'"></span>
+            </div>
+            <div style="display:flex;justify-content:space-between;font-size:0.9rem;">
+              <span style="color:var(--text-secondary);">الضريبة (15%)</span>
+              <span x-text="Math.round(items.reduce((s, i) => s + i.price * i.qty, 0) * 0.15) + ' ر.س'"></span>
+            </div>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;padding:1.5rem 0;font-size:1.1rem;font-weight:700;">
+            <span>الإجمالي</span>
+            <span class="gradient-text" x-text="Math.round(items.reduce((s, i) => s + i.price * i.qty, 0) * (1 - discount/100) * 1.15) + ' ر.س'"></span>
+          </div>
+
+          <button class="btn btn-primary btn-lg" style="width:100%;margin-bottom:1rem;" onclick="showToast('جاري التوجيه لصفحة الدفع...')">
+            إتمام الشراء
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+          </button>
+
+          <div style="display:flex;align-items:center;justify-content:center;gap:0.75rem;padding-top:1rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span style="font-size:0.8rem;color:var(--text-muted);">جميع المعاملات مشفرة وآمنة</span>
+          </div>
+
+          <!-- Payment Methods -->
+          <div style="display:flex;gap:0.5rem;justify-content:center;margin-top:1rem;flex-wrap:wrap;">
+            <span class="badge badge-glass" style="font-size:0.7rem;">Apple Pay</span>
+            <span class="badge badge-glass" style="font-size:0.7rem;">مدى</span>
+            <span class="badge badge-glass" style="font-size:0.7rem;">Visa</span>
+            <span class="badge badge-glass" style="font-size:0.7rem;">تمارا</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding:2rem 0;">
+        <p>© 2024 Fluxora. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    @media (max-width: 768px) {
+      .cart-layout { grid-template-columns: 1fr !important; }
+      .cart-item { flex-wrap: wrap; }
+    }
+  </style>
+</body>
+</html>

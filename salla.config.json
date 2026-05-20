@@ -1,0 +1,66 @@
+{
+  "theme": {
+    "name": "Fluxora",
+    "version": "1.0.0",
+    "compatibility": {
+      "salla_version": ">=2.0",
+      "twig_version": "3.x"
+    }
+  },
+  "routes": {
+    "home": "pages/index.html",
+    "product": "pages/product.html",
+    "category": "pages/category.html",
+    "cart": "pages/cart.html",
+    "about": "pages/about.html",
+    "contact": "pages/contact.html",
+    "offers": "pages/offers.html",
+    "subscriptions": "pages/subscriptions.html",
+    "404": "pages/404.html"
+  },
+  "assets": {
+    "css": [
+      "assets/css/main.css",
+      "assets/css/checkout.css"
+    ],
+    "js": [
+      "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+      "assets/js/app.js",
+      "assets/js/animations.js",
+      "assets/js/salla-integration.js"
+    ],
+    "fonts": [
+      "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap"
+    ]
+  },
+  "features": {
+    "rtl": true,
+    "dark_mode": true,
+    "glassmorphism": true,
+    "particles": true,
+    "cursor_glow": true,
+    "smooth_scroll": true,
+    "lazy_loading": true,
+    "skeleton_loading": true,
+    "toast_notifications": true,
+    "newsletter": true,
+    "faq_accordion": true,
+    "product_tabs": true,
+    "mobile_cta_bar": true,
+    "scroll_progress": true
+  },
+  "seo": {
+    "structured_data": true,
+    "open_graph": true,
+    "twitter_cards": true,
+    "canonical_urls": true,
+    "sitemap_support": true
+  },
+  "performance": {
+    "critical_css_inline": true,
+    "defer_js": true,
+    "lazy_images": true,
+    "preconnect_fonts": true,
+    "reduced_motion_support": true
+  }
+}

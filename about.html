@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>من نحن | Fluxora</title>
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="../assets/js/app.js" defer></script>
+  <script src="../assets/js/animations.js" defer></script>
+</head>
+<body x-data>
+  <div class="animated-bg"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+  <div class="particles-container"></div>
+  <div class="cursor-glow"></div>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <nav class="nav">
+        <a href="index.html" class="nav-logo">Fluxora</a>
+        <ul class="nav-links" :class="{ 'active': $store.app.mobileMenuOpen }">
+          <li><a href="index.html">الرئيسية</a></li>
+          <li><a href="category.html">المنتجات</a></li>
+          <li><a href="subscriptions.html">الاشتراكات</a></li>
+          <li><a href="offers.html">العروض</a></li>
+          <li><a href="about.html" style="color:var(--text-primary);">من نحن</a></li>
+          <li><a href="contact.html">تواصل معنا</a></li>
+        </ul>
+        <div class="nav-actions">
+          <a href="cart.html" class="nav-cart" aria-label="سلة التسوق"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></a>
+          <button class="mobile-toggle" @click="$store.app.toggleMobileMenu()" aria-label="القائمة"><span></span><span></span><span></span></button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section style="padding:5rem 0 3rem;text-align:center;">
+    <div class="container">
+      <span class="badge badge-gradient fade-in" style="margin-bottom:1.5rem;display:inline-flex;">قصتنا</span>
+      <h1 class="fade-in" style="font-size:2.5rem;">نحن <span class="gradient-text">فلكسورا</span></h1>
+      <p class="fade-in" style="max-width:600px;margin:1rem auto 0;font-size:1.1rem;">نبني مستقبل التجارة الرقمية في المملكة العربية السعودية والخليج</p>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="section" style="padding-top:2rem;">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;" class="about-grid">
+        <div class="fade-in">
+          <h2 style="margin-bottom:1.5rem;">من <span class="gradient-text">فكرة</span> إلى منصة رائدة</h2>
+          <p style="margin-bottom:1rem;">بدأت فلكسورا عام 2022 كفكرة بسيطة: توفير المنتجات الرقمية والاشتراكات للمستخدم السعودي بطريقة سهلة وآمنة وبأسعار عادلة.</p>
+          <p style="margin-bottom:1rem;">اليوم، نخدم أكثر من 50,000 عميل في السعودية والخليج، ونقدم أكثر من 500 منتج رقمي متنوع من اشتراكات البث وأدوات الذكاء الاصطناعي إلى حسابات الألعاب والبرامج.</p>
+          <p>رؤيتنا هي أن نكون الوجهة الأولى والأكثر ثقة للمنتجات الرقمية في المنطقة العربية.</p>
+        </div>
+        <div class="fade-in" style="animation-delay:0.2s;">
+          <div style="background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius-xl);padding:3rem;text-align:center;position:relative;overflow:hidden;">
+            <div style="position:absolute;top:-50px;right:-50px;width:200px;height:200px;background:var(--accent-gradient);border-radius:50%;opacity:0.1;filter:blur(40px);"></div>
+            <span style="font-size:5rem;display:block;margin-bottom:1rem;">🚀</span>
+            <h3 style="margin-bottom:0.5rem;">منذ 2022</h3>
+            <p style="font-size:0.9rem;">نبني ونطور ونبتكر</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="section" style="background:var(--bg-secondary);">
+    <div class="container">
+      <div class="section-header">
+        <h2>قيمنا <span class="gradient-text">الأساسية</span></h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🎯</div>
+          <h4>الجودة أولاً</h4>
+          <p>نختار فقط المنتجات الأصلية والموثوقة. لا نساوم أبداً على جودة ما نقدمه لعملائنا.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">💡</div>
+          <h4>الابتكار المستمر</h4>
+          <p>نسعى دائماً لتقديم أحدث المنتجات والتقنيات. نواكب كل جديد في عالم التقنية الرقمية.</p>
+        </div>
+        <div class="feature-card fade-in">
+          <div class="feature-icon">🤝</div>
+          <h4>ثقة العميل</h4>
+          <p>نبني علاقات طويلة الأمد مع عملائنا مبنية على الشفافية والمصداقية والدعم المتواصل.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-card fade-in">
+          <div class="stat-number" data-counter="50000" data-suffix="+">0</div>
+          <div class="stat-label">عميل سعيد</div>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-number" data-counter="500" data-suffix="+">0</div>
+          <div class="stat-label">منتج رقمي</div>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-number" data-counter="99" data-suffix="%">0</div>
+          <div class="stat-label">نسبة الرضا</div>
+        </div>
+        <div class="stat-card fade-in">
+          <div class="stat-number" data-counter="24" data-suffix="/7">0</div>
+          <div class="stat-label">دعم فني</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="newsletter fade-in" style="text-align:center;">
+        <h2 style="position:relative;z-index:1;">جاهز تبدأ <span class="gradient-text">رحلتك الرقمية</span>؟</h2>
+        <p style="position:relative;z-index:1;margin-top:0.75rem;">انضم لآلاف العملاء الراضين واكتشف عالم المنتجات الرقمية</p>
+        <div style="margin-top:2rem;position:relative;z-index:1;">
+          <a href="category.html" class="btn btn-primary btn-lg">تصفح المنتجات</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border:none;padding:2rem 0;">
+        <p>© 2024 Fluxora. جميع الحقوق محفوظة.</p>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    @media (max-width: 768px) { .about-grid { grid-template-columns: 1fr !important; } }
+  </style>
+</body>
+</html>
