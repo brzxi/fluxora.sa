@@ -1,0 +1,105 @@
+name: Add services animated WebP
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-services-webp.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  add-webp:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-core fontconfig
+          python -m pip install --quiet pillow
+      - name: Generate animated services WebP
+        run: |
+          cat > /tmp/make_services_webp.py <<'PY'
+          from PIL import Image, ImageDraw, ImageFont
+          import math, subprocess, os
+
+          W,H = 1000,170
+          BG=(6,21,43)
+          CYAN=(0,200,255)
+          CYAN2=(34,230,255)
+          WHITE=(247,251,255)
+          MUTED=(42,83,126)
+          text='خدماتنا'
+
+          try:
+              font_path=subprocess.check_output(['fc-match','-f','%{file}','Noto Kufi Arabic'], text=True).strip()
+          except Exception:
+              font_path='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
+          font=ImageFont.truetype(font_path,74)
+
+          probe=Image.new('RGB',(W,H),BG)
+          pd=ImageDraw.Draw(probe)
+          try:
+              bbox=pd.textbbox((0,0),text,font=font,direction='rtl',language='ar')
+              rtl=True
+          except Exception:
+              bbox=pd.textbbox((0,0),text,font=font)
+              rtl=False
+          tw,th=bbox[2]-bbox[0],bbox[3]-bbox[1]
+          tx,ty=(W-tw)//2,26
+          kw={'direction':'rtl','language':'ar'} if rtl else {}
+
+          frames=[]
+          for i in range(18):
+              t=i/18
+              img=Image.new('RGB',(W,H),BG)
+              d=ImageDraw.Draw(img)
+
+              pulse=(math.sin(t*2*math.pi-math.pi/2)+1)/2
+              cy=83
+              gap=tw//2+75
+              ll=int(125+78*pulse)
+              d.line((W//2-gap-ll,cy,W//2-gap,cy),fill=MUTED,width=10)
+              d.line((W//2+gap,cy,W//2+gap+ll,cy),fill=MUTED,width=10)
+              d.line((W//2-gap-ll,cy,W//2-gap,cy),fill=CYAN,width=3)
+              d.line((W//2+gap,cy,W//2+gap+ll,cy),fill=CYAN,width=3)
+
+              d.text((tx,ty),text,font=font,fill=WHITE,**kw)
+
+              uw=int(72+26*(0.5+0.5*math.sin(t*2*math.pi)))
+              uy=140
+              d.rounded_rectangle((W//2-uw-7,uy-4,W//2+uw+7,uy+10),radius=7,fill=(11,48,75))
+              d.rounded_rectangle((W//2-uw,uy,W//2+uw,uy+6),radius=3,fill=CYAN2)
+
+              # clean cyan/white spark, no palette conversion
+              sx=int(W//2-uw + (2*uw)*((t*1.5)%1.0))
+              d.ellipse((sx-4,uy-4,sx+4,uy+10),fill=WHITE)
+
+              frames.append(img)
+
+          os.makedirs('fluxora-assets',exist_ok=True)
+          frames[0].save(
+              'fluxora-assets/services.webp',
+              save_all=True,
+              append_images=frames[1:],
+              duration=85,
+              loop=0,
+              lossless=True,
+              quality=100,
+              method=6
+          )
+          print('created', os.path.getsize('fluxora-assets/services.webp'))
+          PY
+          python /tmp/make_services_webp.py
+          test -s fluxora-assets/services.webp
+      - name: Commit WebP
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fluxora-assets/services.webp
+          git diff --cached --quiet && exit 0
+          git commit -m "Add animated services WebP"
+          git push
