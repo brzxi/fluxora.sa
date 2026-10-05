@@ -57,8 +57,6 @@ jobs:
               t=i/14
               img=Image.new('RGB',(W,H),BG)
               d=ImageDraw.Draw(img)
-
-              # side lines pulse only; text stays solid to avoid Safari palette artifacts
               pulse=(math.sin(t*2*math.pi-math.pi/2)+1)/2
               cy=83
               gap=tw//2+75
@@ -67,22 +65,15 @@ jobs:
               d.line((W//2+gap,cy,W//2+gap+ll,cy),fill=MUTED,width=9)
               d.line((W//2-gap-ll,cy,W//2-gap,cy),fill=CYAN,width=3)
               d.line((W//2+gap,cy,W//2+gap+ll,cy),fill=CYAN,width=3)
-
-              # main title in clean white Kufi
               d.text((tx,ty),text,font=font,fill=WHITE,**kw)
-
-              # moving cyan accent underline
               uw=int(70+24*(0.5+0.5*math.sin(t*2*math.pi)))
               uy=140
               d.rounded_rectangle((W//2-uw-6,uy-4,W//2+uw+6,uy+10),radius=7,fill=(11,48,75))
               d.rounded_rectangle((W//2-uw,uy,W//2+uw,uy+6),radius=3,fill=CYAN2)
-
-              # tiny moving spark for a subtle viral feel
               sx=int(W//2-uw + (2*uw)*((t*1.8)%1.0))
               d.ellipse((sx-4,uy-4,sx+4,uy+10),fill=WHITE)
               rgb_frames.append(img)
 
-          # Build one shared palette from a contact sheet, then quantize every frame to exactly that palette.
           sheet=Image.new('RGB',(W,H*len(rgb_frames)),BG)
           for idx,fr in enumerate(rgb_frames):
               sheet.paste(fr,(0,idx*H))
@@ -93,15 +84,7 @@ jobs:
           frames=[fr.quantize(palette=shared,dither=Image.Dither.NONE) for fr in rgb_frames]
 
           os.makedirs('fluxora-assets',exist_ok=True)
-          frames[0].save(
-              'fluxora-assets/services.gif',
-              save_all=True,
-              append_images=frames[1:],
-              duration=90,
-              loop=0,
-              optimize=False,
-              disposal=1
-          )
+          frames[0].save('fluxora-assets/services.gif',save_all=True,append_images=frames[1:],duration=90,loop=0,optimize=False,disposal=1)
           print('created', os.path.getsize('fluxora-assets/services.gif'))
           PY
           python /tmp/make_services.py
@@ -114,3 +97,5 @@ jobs:
           git diff --cached --quiet && exit 0
           git commit -m "Fix services GIF colors for Safari"
           git push
+
+# trigger 2
