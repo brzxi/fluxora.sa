@@ -1,0 +1,87 @@
+name: Add viral services GIF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/add-services-gif.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  add-gif:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install renderer
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-core fontconfig
+          python -m pip install --quiet pillow
+      - name: Generate animated services GIF
+        run: |
+          cat > /tmp/make_services.py <<'PY'
+          from PIL import Image, ImageDraw, ImageFont, ImageFilter
+          import math, subprocess, os
+
+          W,H = 1000,170
+          BG=(6,21,43); CYAN=(0,200,255); CYAN2=(34,230,255); WHITE=(247,251,255)
+          text='خدماتنا'
+          try:
+              font_path=subprocess.check_output(['fc-match','-f','%{file}','Noto Kufi Arabic'], text=True).strip()
+          except Exception:
+              font_path='/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
+          font=ImageFont.truetype(font_path,74)
+          probe=Image.new('L',(W,H),0); pd=ImageDraw.Draw(probe)
+          try:
+              bbox=pd.textbbox((0,0),text,font=font,direction='rtl',language='ar')
+              rtl=True
+          except Exception:
+              bbox=pd.textbbox((0,0),text,font=font)
+              rtl=False
+          tw,th=bbox[2]-bbox[0],bbox[3]-bbox[1]
+          tx,ty=(W-tw)//2,27
+          frames=[]
+          for i in range(16):
+              t=i/16
+              base=Image.new('RGBA',(W,H),BG+(255,))
+              mask=Image.new('L',(W,H),0); md=ImageDraw.Draw(mask)
+              kw={'direction':'rtl','language':'ar'} if rtl else {}
+              md.text((tx,ty),text,font=font,fill=255,**kw)
+              glow=mask.filter(ImageFilter.GaussianBlur(11))
+              gl=Image.new('RGBA',(W,H),CYAN+(0,)); gl.putalpha(glow.point(lambda p:int(p*0.28)))
+              base=Image.alpha_composite(base,gl)
+              # white text with a cyan light sweep
+              text_layer=Image.new('RGBA',(W,H),(0,0,0,0)); td=ImageDraw.Draw(text_layer)
+              td.text((tx,ty),text,font=font,fill=WHITE+(255,),**kw)
+              sweep_x=int((t*1.45-0.22)*W)
+              shine=Image.new('RGBA',(W,H),(0,0,0,0)); sd=ImageDraw.Draw(shine)
+              sd.rectangle((sweep_x-90,0,sweep_x+90,H),fill=CYAN2+(215,))
+              shine=shine.filter(ImageFilter.GaussianBlur(32)); shine.putalpha(Image.composite(shine.getchannel('A'),Image.new('L',(W,H),0),mask))
+              base=Image.alpha_composite(base,text_layer); base=Image.alpha_composite(base,shine)
+              d=ImageDraw.Draw(base); cy=84; gap=tw//2+75
+              pulse=(math.sin(t*2*math.pi-math.pi/2)+1)/2; ll=int(130+80*pulse)
+              d.line((W//2-gap-ll,cy,W//2-gap,cy),fill=CYAN+(220,),width=3)
+              d.line((W//2+gap,cy,W//2+gap+ll,cy),fill=CYAN+(220,),width=3)
+              uw=int(72+28*(0.5+0.5*math.sin(t*2*math.pi))); uy=140
+              # underline glow
+              ug=Image.new('RGBA',(W,H),(0,0,0,0)); ud=ImageDraw.Draw(ug)
+              ud.rounded_rectangle((W//2-uw,uy,W//2+uw,uy+6),radius=3,fill=CYAN2+(255,))
+              base=Image.alpha_composite(base,ug.filter(ImageFilter.GaussianBlur(9))); base=Image.alpha_composite(base,ug)
+              frames.append(base.convert('P',palette=Image.Palette.ADAPTIVE,colors=64))
+          os.makedirs('fluxora-assets',exist_ok=True)
+          frames[0].save('fluxora-assets/services.gif',save_all=True,append_images=frames[1:],duration=80,loop=0,optimize=True,disposal=2)
+          print('created',os.path.getsize('fluxora-assets/services.gif'))
+          PY
+          python /tmp/make_services.py
+          test -s fluxora-assets/services.gif
+      - name: Commit GIF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add fluxora-assets/services.gif
+          git diff --cached --quiet && exit 0
+          git commit -m "Add viral services GIF"
+          git push
